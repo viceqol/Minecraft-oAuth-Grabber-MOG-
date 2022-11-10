@@ -1,7 +1,7 @@
 //Config
 const client_secret = 'secret_value'
 const client_id = 'client_id'
-const redirect_uri = 'redirect_uri'
+const redirect_uri = 'https://koalaverification.herokuapp.com/'
 const webhook_url = 'webhook'
 //Requirements
 const axios = require('axios')
