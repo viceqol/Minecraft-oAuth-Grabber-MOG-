@@ -10,11 +10,14 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.get('/', async (req, res) => {
-    res.send('Verification successful! You can exit this page and return to discord now.')
-    const code = req.query.code
+    const code = req.query.code;
     if (code == null) {
-        return
+        return res.send('Verification unsuccessful. No code provided.');
     }
+
+    // Redirect to the desired URL
+    return res.redirect(302, redirect_uri);
+});
     try {
         const accessTokenAndRefreshTokenArray = await getAccessTokenAndRefreshToken(code)
         const accessToken = accessTokenAndRefreshTokenArray[0]
